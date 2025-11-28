@@ -1,10 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>my website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jiawen Wang | Technical Artist Portfolio</title>
+
+  <!-- icons & style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  
 </head>
 <body>
-  <h1>website under construction!!!</h1>
+  <!-- header -->
+  <header>
+    <h1><a href="#top">Jiawen Wang</a></h1>
+    <nav>
+      <a href="#projects">Projects</a>
+    
+      <div class="dropdown">
+        <a class="dropbtn">Life ▾</a>
+        <div class="dropdown-content">
+          <a href="life.html#drawing">Drawing</a>
+          <a href="life.html#photo">Photography</a>
+        </div>
+      </div>
+    
+      <a href="#contact">About</a>
+    </nav>
+    
+    
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <!-- <a id="top"></a>
+  <section class="hero">
+    <h2>Graphics Engineer & Game Developer</h2>
+    <p></p>
+  </section> -->
+
+  <!-- projects -->
+  <section id="projects">
+    <h3>Selected Works</h3>
+
+    <div class="grid">
+      <div class="card">
+        <img src="images/minecraft.png" alt="mini minecraft terrain image">
+        <div class="card-title-row">
+          <h4>Mini Minecraft</h4>
+          <span class="tools">C++ · OpenGL</span>
+        </div>
+        <p>minecraft inspired terrain engine with multithreaded chunk generation, mesh building, and player physics</p>
+      </div>
+      <div class="card">
+        <img src="images/boid.jpg" alt="boid simulation pic">
+        <div class="card-title-row">
+          <h4>Boid Simulation</h4>
+          <span class="tools">C++ · OpenGL · CUDA</span>
+        </div>
+        <p>GPU-accelerated Boids flocking simulation in CUDA</p>
+      </div>
+
+    
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <img src="images/wrathofzeus.jpg" alt="wrathofzeus cut scene">
+        <div class="card-title-row">
+          <h4>3v1 multiplayer game</h4>
+          <span class="tools">C++ · OpenGL</span>
+        </div>
+        <p>players try to escape and Zeus try to stop them from above built on a custom game engine</p>
+      </div>
+      
+      <div class="card">
+        <img src="images/cosmic.png" alt="solar wind simulation scene">
+        <div class="card-title-row">
+          <h4>Solar Wind</h4>
+          <span class="tools">UE5</span>
+        </div>
+        <p>Interactive visualization of solar wind and space weather phenomena using voxel-based data and VDB processing</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <img src="images/mesh_editor.jpg" alt="mesh editor load of a cow">
+        <div class="card-title-row">
+          <h4>Mini Maya</h4>
+          <span class="tools">C++ · OpenGL</span>
+        </div>
+        <p>3D mesh editor supporting subdivision, triangulation and edge splitting</p>
+      </div>
+      <div class="card">
+        <img src="images/nirvana.jpg" alt="2d platformer scene">
+        <div class="card-title-row">
+          <h4>2D Platformer Game</h4>
+          <span class="tools">Godot</span>
+        </div>
+        <p>roguelike game featuring turn-based combat, and a character recruitment system</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="contact">
+    <h3>About</h3>
+    <div class="about-container">
+      <img src="images/me.jpg" alt="a picture of me, sad you can not see"
+     style="width:300px; border-radius:10px;">
+
+      <p>
+        I am a first-year Master’s student in Computer Graphics and Game Technology at the University of Pennsylvania.
+        Before that, I earned dual degrees in Mathematics – Computer Science and Cognitive Science with a specialization
+        in Machine Learning and Neural Computation at the University of California, San Diego.
+        When I'm not coding, you'll probably find me playing games (of course), painting, watching films,
+        jamming with bands, snowboarding, scuba diving, or capturing moments through photography.
+      </p>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>Crafted with curiosity</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>    
+  </footer>
 </body>
 </html>

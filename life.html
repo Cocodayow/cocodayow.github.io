@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life | Jiawen Wang</title>
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #bcd8ef 0%, #e4edf6 100%);
+      background-attachment: fixed; 
+      background-repeat: no-repeat;
+      background-size: cover;
+      line-height: 1.7;
+      overflow-x: hidden;
+      color: #2c3540;
+    }
+
+    /* Gallery grid */
+    .gallery {
+      padding: 4rem 10% 1rem 10%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      transition: transform 0.35s ease, box-shadow 0.3s ease;
+      display: block;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+    
+    /* .drawing-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1b304e;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  } */
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">Jiawen Wang</a></h1>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="life.html">Life</a>
+      <a href="index.html#contact">About</a>
+    </nav>
+  </header>
+
+  <!-- photography -->
+  <section id="photo" class="gallery">
+
+    <img src="images/Homer.jpg" alt="City">
+    <img src="images/AK.jpg" alt="Landscape">
+    <img src="images/tokyo2.jpg" alt="Painting">
+
+
+      <img src="images/japan_flower.jpg" alt="Flower">
+      <!-- <img src="images/tokyo.jpg" alt="Tokyo" style="width:320px;border-radius:12px;"> -->
+      <img src="images/utah_canyon.jpg" alt="Canyon">
+
+
+    <img src="images/sd2.jpg" alt="Painting">
+    <img src="images/Ak2.jpg" alt="Portrait">
+    <img src="images/grandteton.jpg" alt="Painting">
+
+  </section>
+
+  <!-- drawing  -->
+<section id="drawing" class = "gallery">
+
+  <!-- <h2 class="drawing-title">Drawing</h2> -->
+    <img src="images/drawing2.jpg" alt="zelda">
+    <img src="images/drawing3.jpg" alt="food">
+  </div>
+
+</section>
+
+  
+  </section>
+
+</body>
+</html>
