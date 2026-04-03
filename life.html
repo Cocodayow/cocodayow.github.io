@@ -56,6 +56,23 @@
     width: 100%;
   } */
 
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery-item img {
+    width: 100%;
+  }
+
+  .gallery-caption {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    color: #5b6570;
+    text-align: center;
+  }
+
   </style>
 </head>
 
@@ -71,31 +88,60 @@
 
   <!-- photography -->
   <section id="photo" class="gallery">
+    <img src="images/AK.jpg" alt="Alaska view">
+    <img src="images/PR_sea32.JPG" alt="Puerto Rico sun set seaside">
+    <img src="images/AK3.JPG" alt="Alaska view">
 
-    <img src="images/Homer.jpg" alt="City">
-    <img src="images/AK.jpg" alt="Landscape">
-    <img src="images/tokyo2.jpg" alt="Painting">
+    <img src="images/tokyo2.jpg" alt="Tokyo alley">
 
 
       <img src="images/japan_flower.jpg" alt="Flower">
       <!-- <img src="images/tokyo.jpg" alt="Tokyo" style="width:320px;border-radius:12px;"> -->
-      <img src="images/utah_canyon.jpg" alt="Canyon">
+      <img src="images/utah_canyon.jpg" alt="Utah Canyon">
 
 
-    <img src="images/sd2.jpg" alt="Painting">
-    <img src="images/AK2.jpg" alt="Portrait">
-    <img src="images/grandteton.jpg" alt="Painting">
+    <img src="images/PR_flags.JPG" alt="Puerto Rico old city">
+    <img src="images/Homer.jpg" alt="Alaska Homer view">
+    <img src="images/PR_castle.JPG" alt="Puerto Rico castle">
+    <!-- <img src="images/PR_street.JPG" alt="Puerto Rico street"> -->
+    <img src="images/fallcolor.JPG" alt="trees">
+    <img src="images/route6632.JPG" alt="route66street view">
+    <img src="images/arch_view.jpeg" alt="arch">
 
   </section>
 
   <!-- drawing  -->
-<section id="drawing" class = "gallery">
 
-  <!-- <h2 class="drawing-title">Drawing</h2> -->
-    <img src="images/drawing2.jpg" alt="zelda">
-    <img src="images/drawing3.jpg" alt="food">
+<section id="drawing" class="gallery">
+  <div class="gallery-item">
+    <img src="images/drawing1.jpg" alt="pudding">
+    <p class="gallery-caption">Color pencil</p>
   </div>
 
+  <div class="gallery-item">
+    <img src="images/drawing2.jpg" alt="zelda">
+    <p class="gallery-caption">Oil Painting</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/drawing3.jpg" alt="food">
+    <p class="gallery-caption">Watercolor</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/painting_sea.jpg" alt="sea">
+    <p class="gallery-caption">Oil Painting</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/flower_pastel.jpeg" alt="flower">
+    <p class="gallery-caption">Pastel</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/whale_print43.jpeg" alt="whale_print">
+    <p class="gallery-caption">Woodcut print</p>
+  </div>
 </section>
 
   
