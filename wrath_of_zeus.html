@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wrath of Zeus | Jiawen Wang</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">Jiawen Wang</a></h1>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">About</a>
+    </nav>
+  </header>
+
+  <section class="project-detail">
+    <h3>Wrath of Zeus</h3>
+
+    <video class="project-video" controls poster="images/wrathofzeus.jpg">
+      <source src="videos/woz.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <p>
+      A real-time 3v1 asymmetric multiplayer game built on a custom C++ and OpenGL game engine, featuring procedural maze generation, dynamic lighting, skeletal animation, and player interaction systems.
+    </p>
+
+    <h4>Key Features</h4>
+    <ul>
+      <li>Custom C++ game engine with OpenGL rendering pipeline</li>
+      <li>3v1 asymmetric gameplay where players escape while Zeus controls threats from above</li>
+      <li>Procedural maze generation using room templates, entrance matching, and frontier expansion</li>
+      <li>Skeletal animation system using Assimp-loaded bones, keyframes, and hierarchical FK transforms</li>
+      <li>Dynamic lighting and shader rendering for real-time visual feedback</li>
+      <li>Multiplayer interaction systems for player movement, traps, and game-state updates</li>
+    </ul>
+    <section class="slide-viewer">
+        <img id="main-slide" src="slides/woz_01.jpg" alt="project slide">
+      
+        <div class="slide-strip" id="slide-strip"></div>
+      </section>
+      
+  </section>
+
+<script>
+  const slides = [
+    "slides/woz_01.jpg",
+    "slides/woz_02.jpg",
+    "slides/woz_03.jpg",
+    "slides/woz_04.jpg",
+    "slides/woz_05.jpg",
+    "slides/woz_06.jpg",
+    "slides/woz_07.jpg",
+    "slides/woz_08.jpg",
+    "slides/woz_09.jpg"
+  ];
+
+  const mainSlide = document.getElementById("main-slide");
+  const strip = document.getElementById("slide-strip");
+
+  slides.forEach((src, index) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.className = "slide-thumb";
+    if (index === 0) img.classList.add("active");
+
+    img.onclick = () => {
+      mainSlide.src = src;
+
+      document.querySelectorAll(".slide-thumb").forEach(t => {
+        t.classList.remove("active");
+      });
+
+      img.classList.add("active");
+    };
+
+    strip.appendChild(img);
+  });
+</script>
+
+  <footer>
+    <p>Crafted with curiosity</p>
+  </footer>
+</body>
+</html>

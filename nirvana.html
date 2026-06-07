@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nirvana | Jiawen Wang</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">Jiawen Wang</a></h1>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">About</a>
+    </nav>
+  </header>
+
+  <section class="project-detail">
+    <h3>Nirvana</h3>
+
+    <video class="project-video" controls poster="images/nirvana.jpg">
+      <source src="videos/nirvana.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <p>
+      A 2D roguelike platformer game built in Godot, featuring turn-based combat, character recruitment, and level-based gameplay progression.
+    </p>
+
+    <h4>Key Features</h4>
+    <ul>
+      <li>2D platformer gameplay with roguelike progression</li>
+      <li>Turn-based combat system with enemy encounters</li>
+      <li>Character recruitment system for building a playable team</li>
+      <li>Level design, player movement, collision, and combat interaction implemented in Godot</li>
+    </ul>
+    <section class="slide-viewer">
+        <img id="main-slide" src="slides/nirvana_1.jpg" alt="project slide">
+      
+        <div class="slide-strip" id="slide-strip"></div>
+      </section>
+  </section>
+
+
+<script>
+  const slides = [
+    "slides/nirvana_1.jpg",
+    "slides/nirvana_2.jpg",
+    "slides/nirvana_3.jpg",
+    "slides/nirvana_4.jpg",
+    "slides/nirvana_5.jpg",
+    "slides/nirvana_6.jpg"
+  ];
+
+  const mainSlide = document.getElementById("main-slide");
+  const strip = document.getElementById("slide-strip");
+
+  slides.forEach((src, index) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.className = "slide-thumb";
+    if (index === 0) img.classList.add("active");
+
+    img.onclick = () => {
+      mainSlide.src = src;
+
+      document.querySelectorAll(".slide-thumb").forEach(t => {
+        t.classList.remove("active");
+      });
+
+      img.classList.add("active");
+    };
+
+    strip.appendChild(img);
+  });
+</script>
+  <footer>
+    <p>Crafted with curiosity</p>
+  </footer>
+</body>
+</html>

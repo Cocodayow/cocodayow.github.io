@@ -281,3 +281,58 @@ html {
   margin-left: 1rem;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:visited {
+  color: inherit;
+}
+
+.project-video {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 24px auto;
+  border-radius: 12px;
+}
+
+.slide-viewer {
+  width: 100%;
+  max-width: 1450px;
+  margin: 16px auto 32px auto;
+}
+
+#main-slide {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.slide-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.slide-thumb {
+  height: 200px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+}
+
+.slide-thumb:hover {
+  opacity: 1;
+}
+
+.slide-thumb.active {
+  opacity: 1;
+  border: 2px solid #222;
+}
