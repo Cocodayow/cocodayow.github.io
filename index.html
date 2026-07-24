@@ -5,141 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jiawen Wang | Technical Artist Portfolio</title>
 
-  <!-- icons & style -->
+  <!-- icons & fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="index.css">
 
+  <!-- three.js (no build step) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="main.js" defer></script>
 </head>
 <body>
-  <!-- header -->
+  <!-- Three.js ocean + project card carousel -->
+  <canvas id="scene-canvas" aria-hidden="true"></canvas>
+
+  <!-- top nav -->
   <header>
-    <h1><a href="#top">Jiawen Wang</a></h1>
+    <h1><a href="#panel-morning">Jiawen Wang</a></h1>
     <nav>
-      <a href="#projects">Projects</a>
-    
-      <div class="dropdown">
-        <a class="dropbtn">Life ▾</a>
-        <div class="dropdown-content">
-          <a href="life.html#drawing">Drawing</a>
-          <a href="life.html#photo">Photography</a>
-        </div>
-      </div>
-    
-      <a href="#contact">About</a>
+      <a href="#panel-morning" data-scroll="0">Projects</a>
+      <a href="#panel-night" data-scroll="1">Life</a>
+      <a href="#panel-afternoon" data-scroll="0.5">About</a>
     </nav>
-    
-    
   </header>
 
-  <!-- ===== HERO ===== -->
-  <!-- <a id="top"></a>
-  <section class="hero">
-    <h2>Graphics Engineer & Game Developer</h2>
-    <p></p>
-  </section> -->
+  <!-- scroll progress rail -->
+  <div id="progress-rail" aria-hidden="true">
+    <div id="progress-rail-fill"></div>
+    <button class="rail-dot" data-scroll="0" aria-label="Projects"></button>
+    <button class="rail-dot" data-scroll="0.5" aria-label="About"></button>
+    <button class="rail-dot" data-scroll="1" aria-label="Life"></button>
+  </div>
 
-  <!-- projects -->
-  <section id="projects">
-    <h3>Selected Works</h3>
+  <!-- Panel 1 — Projects (carousel of 6 cards on right side) -->
+  <section class="panel" id="panel-morning" data-panel="morning">
+    <!-- Carousel controls (HTML, not in 3D) -->
+    <button class="carousel-arrow carousel-arrow--prev" data-carousel="prev" aria-label="Previous project">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="carousel-arrow carousel-arrow--next" data-carousel="next" aria-label="Next project">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div id="carousel-dots" aria-label="Project selector">
+      <button class="is-active" aria-label="Project 1"></button>
+      <button aria-label="Project 2"></button>
+      <button aria-label="Project 3"></button>
+      <button aria-label="Project 4"></button>
+      <button aria-label="Project 5"></button>
+      <button aria-label="Project 6"></button>
+    </div>
 
-    <div class="grid">
-      <a href="minecraft.html" class="card card-link">
-        <img src="images/minecraft_final.JPG" alt="mini minecraft terrain image" width="800" height="450" loading="eager" decoding="async" fetchpriority="high">
-        <div class="card-title-row">
-          <h4>Mini Minecraft</h4>
-          <span class="tools">C++ · OpenGL</span>
-        </div>
-        <p>minecraft inspired terrain engine with multithreaded chunk generation, mesh building, and player physics</p>
-      </a>
+    <!-- No-WebGL fallback: static project list -->
+    <noscript>
+      <ul class="orb-fallback">
+        <li><a href="minecraft.html">Mini Minecraft</a></li>
+        <li><a href="mpm.html">MPM Material Sim</a></li>
+        <li><a href="wrath_of_zeus.html">Wrath of Zeus</a></li>
+        <li><a href="flock_simulation.html">Flocking Simulation</a></li>
+        <li><a href="solarwind.html">Solar Wind</a></li>
+        <li><a href="nirvana.html">Nirvana</a></li>
+      </ul>
+    </noscript>
+  </section>
 
-      <a href="mpm.html" class="card card-link">
-        <img src="images/mpm.jpg" alt="material simulation pic" width="800" height="450" loading="lazy" decoding="async">
-        <div class="card-title-row">
-          <h4>MPM based material simulation plugin</h4>
-          <span class="tools">C++ · Houdini</span>
-        </div>
-        <p>Simulates deformable materials such as snow, sand, and elastic objects with mesh colliders and user defined simulation domains
+  <!-- Panel 2 — About: bio + portrait -->
+  <section class="panel" id="panel-afternoon" data-panel="afternoon">
+    <div class="panel-content panel-content--center">
+      <div class="bio">
+        <img src="images/me.jpg" alt="Jiawen Wang" width="300" height="300" loading="lazy" decoding="async">
+        <p>
+          Hello there! I am a first-year Master's student in Computer Graphics and Game Technology
+          at the University of Pennsylvania. I'm a graphics engineer &amp; technical artist proficient
+          in C++, Python, and shading languages with game development experiences. When I'm not coding,
+          you'll probably find me playing games (of course), painting, snowboarding, scuba diving,
+          or capturing moments through photography.
         </p>
-      </a>
-    </div>
-
-    <div class="grid">
-      <a href="wrath_of_zeus.html" class="card card-link">
-        <img src="images/wrathofzeus.jpg" alt="wrath of zeus cut scene" width="800" height="450" loading="lazy" decoding="async">
-        <div class="card-title-row">
-          <h4>3v1 multiplayer game</h4>
-          <span class="tools">C++ · OpenGL</span>
-        </div>
-        <p>players try to escape and Zeus try to stop them from above built on a custom game engine</p>
-      </a>
-
-      <a href="flock_simulation.html" class="card card-link">
-        <img src="images/boid.jpg" alt="boid simulation pic" width="800" height="450" loading="lazy" decoding="async">
-        <div class="card-title-row">
-          <h4>Flocking Simulation & Character Behavior Animation System</h4>
-          <span class="tools">C++ · OpenGL · CUDA</span>
-        </div>
-        <p>GPU-accelerated Boids flocking simulation with character behavior animation system</p>
-      </a>
-    </div>
-
-    <div class="grid">
-      <!-- <div class="card">
-        <img src="images/mesh_editor.jpg" alt="mesh editor load of a cow">
-        <div class="card-title-row">
-          <h4>Mini Maya</h4>
-          <span class="tools">C++ · OpenGL</span>
-        </div>
-        <p>3D mesh editor supporting subdivision, triangulation and edge splitting</p>
-      </div> -->
-
-      <a href="solarwind.html" class="card card-link">
-        <img src="images/cosmic.jpg" alt="solar wind simulation scene" width="800" height="450" loading="lazy" decoding="async">
-        <div class="card-title-row">
-          <h4>Solar Wind</h4>
-          <span class="tools">UE5</span>
-        </div>
-        <p>Interactive visualization of solar wind and space weather phenomena using voxel-based data and VDB processing</p>
-      </a>
-
-      <a href="nirvana.html" class="card card-link">
-        <img src="images/nirvana.jpg" alt="2d platformer scene" width="800" height="450" loading="lazy" decoding="async">
-        <div class="card-title-row">
-          <h4>2D Platformer Game</h4>
-          <span class="tools">Godot</span>
-        </div>
-        <p>roguelike game featuring turn-based combat, and a character recruitment system</p>
-      </a>
+      </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="contact">
-    <h3>About</h3>
-    <div class="about-container">
-      <img src="images/me.jpg" alt="a picture of me, sad you can not see" width="300" height="300" loading="lazy" decoding="async"
-     style="width:300px; border-radius:10px;">
+  <!-- Panel 3 — Life: photography + paintings gallery (normal scrolling content) -->
+  <section class="panel" id="panel-night" data-panel="night">
+    <div class="panel-content panel-content--gallery">
+      <section class="gallery">
+        <img src="images/AK.jpg" alt="Alaska view" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/PR_sea32.JPG" alt="Puerto Rico sun set seaside" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/AK3.JPG" alt="Alaska view" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/tokyo2.jpg" alt="Tokyo alley" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/japan_flower.jpg" alt="Flower" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/utah_canyon.jpg" alt="Utah Canyon" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/PR_flags.JPG" alt="Puerto Rico old city" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/Homer.jpg" alt="Alaska Homer view" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/PR_castle.JPG" alt="Puerto Rico castle" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/fallcolor.JPG" alt="trees" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/route6632.JPG" alt="route66 street view" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/arch_view.jpeg" alt="arch" width="1600" height="1067" loading="lazy" decoding="async">
 
-      <p>
-        Hello there! I am a first-year Master’s student in Computer Graphics and Game Technology at the University of Pennsylvania.
-        I'm a graphics engineer & technical artist proficient in C++, Phython, and shading languages with game development experiences.
-        When I'm not coding, you'll probably find me playing games (of course), painting, snowboarding, scuba diving, or capturing moments through photography.
-      </p>
+        <img src="images/drawing1.jpg" alt="pudding" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/drawing2.jpg" alt="zelda" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/drawing4.jpg" alt="drawing" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/painting_sea.png" alt="sea" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/flower_pastel.jpeg" alt="flower" width="1600" height="1067" loading="lazy" decoding="async">
+        <img src="images/whale_print43.jpeg" alt="whale_print" width="1600" height="1067" loading="lazy" decoding="async">
+      </section>
     </div>
   </section>
-  
 
-  <!-- Footer -->
+  <!-- expand flash overlay (shown during card click → navigate) -->
+  <div id="orb-flash" aria-hidden="true"></div>
+
+  <!-- footer -->
   <footer>
     <p>Crafted with curiosity</p>
     <div class="social-links">
-      <a href="https://www.linkedin.com/in/cocodayow" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/cocodayow" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/cocodayow" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>    
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 </body>
 </html>

@@ -3,41 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MPM Material Plugin | Jiawen Wang</title>
-  <link rel="stylesheet" href="index.css">
+  <title>MPM Material Sim | Jiawen Wang</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="project.css">
 </head>
 
 <body>
   <header>
     <h1><a href="index.html">Jiawen Wang</a></h1>
     <nav>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">About</a>
+      <a href="index.html#panel-morning">Projects</a>
+      <a href="index.html#panel-afternoon">About</a>
     </nav>
   </header>
 
-  <section class="project-detail">
-    <h3>MPM-Based Material Simulation Plugin</h3>
+  <section class="hero">
+    <div class="hero-tags">
+      <span>C++</span><span>Houdini</span><span>MPM</span><span>Simulation</span>
+    </div>
+    <h1>MPM Material Simulation</h1>
+    <p class="lede">A Houdini plugin that uses the Material Point Method to simulate snow, sand, and elastic objects with mesh colliders.</p>
+  </section>
 
-    <video class="project-video" controls preload="none" poster="images/mpm.jpg">
-      <source src="videos/mpm.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <section class="detail">
+    <aside class="detail-side">
+      <h3>About the project</h3>
+      <p>
+        A real-time Material Point Method plugin for Houdini that converts input
+        meshes into particles and simulates deformable materials. Supports mesh
+        colliders, user-defined simulation domains, and a wide range of material
+        parameters including Young's modulus, Poisson's ratio, and substeps.
+      </p>
 
-    <p>
-      An MPM-based material simulation plugin that converts input meshes into particles and simulates deformable materials such as snow, sand, and elastic objects with mesh colliders and user-defined simulation domains.
-    </p>
+      <h3>Key features</h3>
+      <ul class="feature-list">
+        <li>MPM simulation for snow, sand, and jelly-like materials</li>
+        <li>Custom input meshes, mesh colliders, bounding-box domains</li>
+        <li>Reset simulation, timescale, emitter, substeps controls</li>
+        <li>Grid resolution, gravity, mass, Young's modulus, Poisson's ratio</li>
+      </ul>
 
-    <h4>Key Features</h4>
-    <ul>
-      <li>Material Point Method simulation for snow, sand, and jelly-like materials</li>
-      <li>Supports custom input meshes, mesh colliders, and bounding-box simulation domains</li>
-      <li>Plugin style workflow with reset simulation, adjustable timescale, emitter, substeps, grid resolution, gravity, mass, young's modulus, poisson's ratio</li>
-    </ul>
+      <a class="back-link" href="index.html#panel-morning">← Back to projects</a>
+    </aside>
+
+    <div class="media">
+      <div class="cover-frame">
+        <video class="project-video" controls preload="none" poster="images/mpm.jpg">
+          <source src="videos/mpm.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>Crafted with curiosity</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 </body>
 </html>

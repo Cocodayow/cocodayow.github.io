@@ -3,43 +3,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Solar Wind Visualization | Jiawen Wang</title>
-  <link rel="stylesheet" href="index.css">
+  <title>Solar Wind | Jiawen Wang</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="project.css">
 </head>
 
 <body>
   <header>
     <h1><a href="index.html">Jiawen Wang</a></h1>
     <nav>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">About</a>
+      <a href="index.html#panel-morning">Projects</a>
+      <a href="index.html#panel-afternoon">About</a>
     </nav>
   </header>
 
-  <section class="project-detail">
-    <h3>Solar Wind Visualization System</h3>
+  <section class="hero">
+    <div class="hero-tags">
+      <span>UE5</span><span>VDB</span><span>Voxel</span><span>VR</span>
+    </div>
+    <h1>Solar Wind</h1>
+    <p class="lede">An Unreal Engine 5 visualization of solar wind and space weather, with voxel-based VDB rendering and VR interaction.</p>
+  </section>
 
-    <video class="project-video" controls preload="none" poster="images/cosmic.jpg">
-      <source src="videos/solarwind.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <section class="detail">
+    <aside class="detail-side">
+      <h3>About the project</h3>
+      <p>
+        An interactive UE5 visualization system for solar wind and space weather
+        simulation data. Orbital and simulation data are converted into high-resolution
+        VDB voxel meshes for 3D exploration, with voxel slicing, color scale, and
+        visibility controls. Includes VR controller-based interaction for floating
+        UI panels and visualization parameter control.
+      </p>
 
-    <p>
-      An interactive Unreal Engine 5 visualization system for solar wind and space weather data, using voxel-based rendering and VDB processing to support real-time exploration of coronal mass ejection simulation results.
-    </p>
+      <h3>Key features</h3>
+      <ul class="feature-list">
+        <li>Converted orbital data into VDB voxel meshes</li>
+        <li>Voxel slicing, color scale, visibility controls</li>
+        <li>VR controller interaction with floating UI panels</li>
+        <li>Real-time playback + speed adjustment</li>
+      </ul>
 
-    <h4>Key Features</h4>
-    <ul>
-      <li>Converted orbital and simulation data into high-resolution VDB voxel meshes for 3D visualization</li>
-      <li>Integrated voxel slicing, color scale control, and visibility adjustment tools in UE5</li>
-      <li>Implemented VR controller-based interaction for floating UI panels and visualization parameter control</li>
-      <li>Supported real-time playback, adjustable playback speed, and interactive inspection of space weather data</li>
-    </ul>
+      <a class="back-link" href="index.html#panel-morning">← Back to projects</a>
+    </aside>
 
+    <div class="media">
+      <div class="cover-frame">
+        <video class="project-video" controls preload="none" poster="images/cosmic.jpg">
+          <source src="videos/solarwind.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>Crafted with curiosity</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 </body>
 </html>

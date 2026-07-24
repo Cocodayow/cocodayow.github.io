@@ -4,85 +4,99 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wrath of Zeus | Jiawen Wang</title>
-  <link rel="stylesheet" href="index.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="project.css">
 </head>
 
 <body>
   <header>
     <h1><a href="index.html">Jiawen Wang</a></h1>
     <nav>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">About</a>
+      <a href="index.html#panel-morning">Projects</a>
+      <a href="index.html#panel-afternoon">About</a>
     </nav>
   </header>
 
-  <section class="project-detail">
-    <h3>Wrath of Zeus</h3>
-
-    <video class="project-video" controls preload="none" poster="images/wrathofzeus.jpg">
-      <source src="videos/woz_small.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <p>
-      A real-time 3v1 asymmetric multiplayer game built on a custom C++ and OpenGL game engine, featuring procedural maze generation, dynamic lighting, skeletal animation, and player interaction systems.
-    </p>
-
-    <h4>Key Features</h4>
-    <ul>
-      <li>Custom C++ game engine with OpenGL rendering pipeline</li>
-      <li>3v1 asymmetric gameplay where players escape while Zeus controls threats from above</li>
-      <li>Procedural maze generation using room templates, entrance matching, and frontier expansion</li>
-      <li>Skeletal animation system using Assimp-loaded bones, keyframes, and hierarchical FK transforms</li>
-      <li>Dynamic lighting and shader rendering for real-time visual feedback</li>
-      <li>Multiplayer interaction systems for player movement, traps, and game-state updates</li>
-    </ul>
-    <section class="slide-viewer">
-        <img id="main-slide" src="slides/woz_01.jpg" alt="project slide" width="1450" height="812" loading="eager" decoding="async" fetchpriority="high">
-      
-        <div class="slide-strip" id="slide-strip"></div>
-      </section>
-      
+  <section class="hero">
+    <div class="hero-tags">
+      <span>C++</span><span>OpenGL</span><span>Multiplayer</span><span>Skeletal Animation</span>
+    </div>
+    <h1>Wrath of Zeus</h1>
+    <p class="lede">A 3v1 asymmetric multiplayer game on a custom C++ engine, with procedural mazes, dynamic lighting, and skeletal animation.</p>
   </section>
 
-<script>
-  const slides = [
-    "slides/woz_01.jpg",
-    "slides/woz_02.jpg",
-    "slides/woz_03.jpg",
-    "slides/woz_04.jpg",
-    "slides/woz_05.jpg",
-    "slides/woz_06.jpg",
-    "slides/woz_07.jpg",
-    "slides/woz_08.jpg",
-    "slides/woz_09.jpg"
-  ];
+  <section class="detail">
+    <aside class="detail-side">
+      <h3>About the project</h3>
+      <p>
+        A real-time 3v1 asymmetric multiplayer game where players try to escape
+        while Zeus controls threats from above. Built on a custom C++ / OpenGL
+        game engine with procedural maze generation, dynamic lighting, skeletal
+        animation via Assimp, and full multiplayer interaction systems.
+      </p>
 
-  const mainSlide = document.getElementById("main-slide");
-  const strip = document.getElementById("slide-strip");
+      <h3>Key features</h3>
+      <ul class="feature-list">
+        <li>Custom C++ engine with OpenGL rendering pipeline</li>
+        <li>3v1 asymmetric gameplay (escapees vs. Zeus)</li>
+        <li>Procedural maze via room templates + frontier expansion</li>
+        <li>Skeletal animation with Assimp-loaded bones + keyframes</li>
+        <li>Dynamic lighting and shader-based visual feedback</li>
+        <li>Multiplayer movement, traps, and game-state updates</li>
+      </ul>
 
-  slides.forEach((src, index) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.className = "slide-thumb";
-    if (index === 0) img.classList.add("active");
+      <a class="back-link" href="index.html#panel-morning">← Back to projects</a>
+    </aside>
 
-    img.onclick = () => {
-      mainSlide.src = src;
+    <div class="media">
+      <div class="cover-frame">
+        <video class="project-video" controls preload="none" poster="images/wrathofzeus.jpg">
+          <source src="videos/woz_small.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-      document.querySelectorAll(".slide-thumb").forEach(t => {
-        t.classList.remove("active");
-      });
+      <section class="slide-viewer">
+        <img id="main-slide" src="slides/woz_01.jpg" alt="project slide" width="1450" height="812" loading="eager" decoding="async">
+        <div class="slide-strip" id="slide-strip"></div>
+      </section>
+    </div>
+  </section>
 
-      img.classList.add("active");
-    };
-
-    strip.appendChild(img);
-  });
-</script>
+  <script>
+    const slides = [
+      "slides/woz_01.jpg", "slides/woz_02.jpg", "slides/woz_03.jpg",
+      "slides/woz_04.jpg", "slides/woz_05.jpg", "slides/woz_06.jpg",
+      "slides/woz_07.jpg", "slides/woz_08.jpg", "slides/woz_09.jpg"
+    ];
+    const mainSlide = document.getElementById("main-slide");
+    const strip = document.getElementById("slide-strip");
+    slides.forEach((src, index) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.className = "slide-thumb";
+      if (index === 0) img.classList.add("active");
+      img.loading = "lazy";
+      img.onclick = () => {
+        mainSlide.src = src;
+        document.querySelectorAll(".slide-thumb").forEach(t => t.classList.remove("active"));
+        img.classList.add("active");
+      };
+      strip.appendChild(img);
+    });
+  </script>
 
   <footer>
     <p>Crafted with curiosity</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 </body>
 </html>

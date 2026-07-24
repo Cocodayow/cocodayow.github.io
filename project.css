@@ -1,0 +1,235 @@
+/* project.css — shared styles for project detail pages (minecraft, mpm, etc.)
+   Matches the homepage 3D ocean aesthetic: light blue / deep blue / white,
+   gentle glass / backdrop blur, generous spacing. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  background: linear-gradient(180deg, #cfe5f6 0%, #bcd8ef 100%);
+  background-attachment: fixed;
+  color: #1e2833;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: #2a4f85;
+  text-decoration: none;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+a:hover { color: #143766; text-shadow: 0 0 4px rgba(60, 90, 140, 0.3); }
+
+/* ---------- header ---------- */
+header {
+  padding: 1rem 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(240, 247, 255, 0.75);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #1e355a;
+}
+header h1 a { color: #1e355a; }
+header h1 a:hover { color: #2a4f85; }
+header nav { display: flex; gap: 1.5rem; }
+header nav a {
+  font-size: 0.95rem;
+  color: #2e4668;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+header nav a:hover { color: #143766; }
+
+/* ---------- hero / cover ---------- */
+.hero {
+  max-width: 1180px;
+  margin: 4rem auto 2rem auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hero-tags span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(20, 55, 102, 0.08);
+  border: 1px solid rgba(20, 55, 102, 0.25);
+  color: #1e355a;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: #143766;
+  letter-spacing: 0.3px;
+  line-height: 1.15;
+}
+.hero p.lede {
+  font-size: 1.15rem;
+  color: #324a63;
+  max-width: 780px;
+}
+
+/* ---------- main content layout (2-column on desktop) ---------- */
+.detail {
+  max-width: 1180px;
+  margin: 2rem auto 6rem auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .detail { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.detail-side {
+  position: sticky;
+  top: 100px;
+}
+.detail-side h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #5a6d85;
+  margin-bottom: 1rem;
+}
+.detail-side p {
+  font-size: 1rem;
+  color: #2f4052;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.feature-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+.feature-list li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.6rem;
+  font-size: 0.98rem;
+  color: #2f4052;
+}
+.feature-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #2a4f85;
+  font-weight: 600;
+}
+
+/* ---------- media stack on the right ---------- */
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.media .cover-frame {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 32px rgba(20, 55, 102, 0.16);
+}
+.media .cover-frame img,
+.media .cover-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+.media video {
+  background: #0b1a3a;
+}
+
+.slide-viewer {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 12px 32px rgba(20, 55, 102, 0.12);
+}
+#main-slide {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.slide-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+.slide-thumb {
+  height: 110px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+  transition: opacity .25s ease, border-color .2s ease;
+}
+.slide-thumb:hover { opacity: 1; }
+.slide-thumb.active { opacity: 1; border-color: #143766; }
+
+/* ---------- footer ---------- */
+footer {
+  background: rgba(231, 237, 243, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #2f4052;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+footer .social-links { margin-top: 0.6rem; }
+footer .social-links a {
+  margin: 0 0.8rem;
+  color: #325b8f;
+  font-size: 1.35rem;
+}
+footer .social-links a:hover { color: #143766; }
+
+.back-link {
+  display: inline-block;
+  margin: 2rem 0 0 0;
+  padding: 0.6rem 1.2rem;
+  background: rgba(20, 55, 102, 0.08);
+  border: 1px solid rgba(20, 55, 102, 0.25);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1e355a;
+}
+.back-link:hover { background: rgba(20, 55, 102, 0.16); }

@@ -340,3 +340,318 @@ html {
   opacity: 1;
   border: 2px solid #222;
 }
+
+/* ===================================================================
+   3-Panel Scene Additions (homepage only — project pages keep legacy)
+   =================================================================== */
+
+/* document is 3 viewports tall; canvas is fixed behind everything.
+   Only applies when the scene page class is on body. main.js adds .scene-page;
+   no-webgl fallback removes it. */
+html, body.scene-page {
+  height: 300vh;
+  scroll-behavior: auto;
+  overscroll-behavior-y: none;
+}
+
+#scene-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  display: block;
+  touch-action: pan-y;
+}
+
+/* each panel is one viewport tall */
+.panel {
+  position: relative;
+  height: 100vh;
+  z-index: 5;
+  pointer-events: none; /* canvas keeps clicks for orbs */
+}
+
+/* HTML overlays inside each panel — sit above the canvas */
+.panel-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none; /* let orbs receive clicks; <a> children re-enable */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.panel.is-active .panel-content {
+  opacity: 1;
+  transform: none;
+}
+
+.panel-content--top    { align-items: flex-start; justify-content: center; padding-top: 7rem; }
+.panel-content--bottom { align-items: flex-end; justify-content: flex-start; padding: 0 6vw 8vh; }
+.panel-content--center { align-items: center;   justify-content: center; padding: 0 6vw; }
+.panel-content--gallery {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 7rem 0 4rem 0;
+  /* No max-height / overflow — let the gallery flow with the page so the user can scroll all the way to the bottom. */
+}
+
+/* panel 2 — about */
+.bio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 2rem;
+  pointer-events: auto;
+}
+.bio img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(20, 55, 102, 0.18);
+}
+.bio p {
+  flex: 1;
+  min-width: 260px;
+  color: #1e2c3d;
+  font-size: 1rem;
+  line-height: 1.85;
+  text-align: left;
+  margin: 0;
+}
+
+/* panel 3 — gallery inherits .gallery rules above; just constrain inside scrollable region */
+.panel-content--gallery .gallery {
+  padding: 0 6% 2rem 6%;
+}
+
+/* expand flash overlay */
+#orb-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, #7fb6e8 0%, #cfe5f6 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+#orb-flash.is-active {
+  opacity: 1;
+}
+
+/* Carousel arrow buttons (HTML overlays; only visible during Panel 1) */
+.carousel-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1e355a;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(20, 55, 102, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease, transform .2s ease, background .2s ease;
+}
+.carousel-arrow--prev { left: 32px; }
+.carousel-arrow--next { right: 100px; }
+.carousel-arrow:hover { background: rgba(255, 255, 255, 0.9); transform: translateY(-50%) scale(1.05); }
+
+/* only show arrows + dots while Panel 1 is active */
+body.scene-page[data-active-panel="0"] .carousel-arrow { opacity: 1; pointer-events: auto; }
+
+/* carousel dots */
+#carousel-dots {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+#carousel-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 1px 3px rgba(20, 55, 102, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s ease, transform .2s ease;
+}
+#carousel-dots button:hover { background: rgba(255, 255, 255, 0.85); }
+#carousel-dots button.is-active {
+  background: #1e355a;
+  transform: scale(1.4);
+}
+body.scene-page[data-active-panel="0"] #carousel-dots { opacity: 1; pointer-events: auto; }
+
+/* progress rail */
+#progress-rail {
+  position: fixed;
+  top: 0;
+  right: 14px;
+  height: 100vh;
+  width: 4px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  pointer-events: none;
+}
+#progress-rail-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #2a4f85 0%, #7fb6e8 50%, #0b1a3a 100%);
+  border-radius: 2px;
+  transition: height 0.05s linear;
+}
+.rail-dot {
+  position: absolute;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(20, 55, 102, 0.5);
+  pointer-events: auto;
+  cursor: pointer;
+  padding: 0;
+  transform: translateY(-50%);
+}
+.rail-dot[data-scroll="0"]   { top: 0%;   }
+.rail-dot[data-scroll="0.5"] { top: 50%;  }
+.rail-dot[data-scroll="1"]   { top: 100%; }
+
+/* noscript fallback list */
+.orb-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 6rem 8%;
+  list-style: none;
+  pointer-events: auto;
+}
+.orb-fallback li a {
+  display: block;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(20, 55, 102, 0.15);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  color: #143766;
+  font-weight: 600;
+}
+
+/* footer floats over the canvas (when WebGL is active). In no-webgl fallback, footer is flow content. */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(231, 237, 243, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.8rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.no-webgl footer {
+  position: static;
+  margin-top: 2rem;
+}
+
+/* no-WebGL fallback — hide canvas, show static gradient + flat orbs */
+.no-webgl #scene-canvas { display: none; }
+.no-webgl html, .no-webgl body {
+  height: auto;
+  scroll-behavior: auto;
+}
+.no-webgl body {
+  background: linear-gradient(180deg,
+    #cfe5f6 0%, #bcd8ef 33%,
+    #e9d9b8 66%, #0b1a3a 100%);
+  background-attachment: fixed;
+}
+/* panels stack as flow content, no fixed positioning trickery */
+.no-webgl .panel {
+  pointer-events: auto !important;
+  height: auto !important;
+  min-height: 100vh;
+  padding: 6rem 0 5rem 0;
+  display: block !important;
+}
+.no-webgl .panel-content {
+  opacity: 1 !important;
+  transform: none !important;
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 0 6vw !important;
+}
+/* gallery: constrain images to a reasonable aspect ratio so 18 lazy imgs
+   don't sum to 19000px of placeholder height before they load */
+.no-webgl .panel-content--gallery {
+  padding: 0 !important;
+  overflow: visible !important;
+}
+.no-webgl .panel-content--gallery .gallery {
+  padding: 0 6% 2rem 6% !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.no-webgl .panel-content--gallery .gallery img {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 4 / 3; /* tighter than 3:2 so layout fits */
+  object-fit: cover;
+}
+.no-webgl .panel-title {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-bottom: 2rem;
+}
+.no-webgl .bio { margin: 0 auto; }
+.no-webgl #progress-rail { display: none; }
+.no-webgl header { position: sticky; top: 0; z-index: 10; }
+
+/* mobile tweaks */
+@media (max-width: 768px) {
+  .panel-content--gallery { padding-top: 6rem; }
+  .bio { gap: 1.2rem; padding: 1.4rem; }
+  .bio img { width: 120px; height: 120px; }
+  .panel-title { font-size: 1.4rem; }
+  #progress-rail { right: 6px; }
+}

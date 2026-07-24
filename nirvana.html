@@ -4,79 +4,96 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nirvana | Jiawen Wang</title>
-  <link rel="stylesheet" href="index.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="project.css">
 </head>
 
 <body>
   <header>
     <h1><a href="index.html">Jiawen Wang</a></h1>
     <nav>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">About</a>
+      <a href="index.html#panel-morning">Projects</a>
+      <a href="index.html#panel-afternoon">About</a>
     </nav>
   </header>
 
-  <section class="project-detail">
-    <h3>Nirvana</h3>
-
-    <video class="project-video" controls preload="none" poster="images/nirvana.jpg">
-      <source src="videos/nirvana.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <p>
-      A 2D roguelike platformer game built in Godot, featuring turn-based combat, character recruitment, and level-based gameplay progression.
-    </p>
-
-    <h4>Key Features</h4>
-    <ul>
-      <li>2D platformer gameplay with roguelike progression</li>
-      <li>Turn-based combat system with enemy encounters</li>
-      <li>Character recruitment system for building a playable team</li>
-      <li>Level design, player movement, collision, and combat interaction implemented in Godot</li>
-    </ul>
-    <section class="slide-viewer">
-        <img id="main-slide" src="slides/nirvana_1.jpg" alt="project slide" width="1450" height="812" loading="eager" decoding="async" fetchpriority="high">
-      
-        <div class="slide-strip" id="slide-strip"></div>
-      </section>
+  <section class="hero">
+    <div class="hero-tags">
+      <span>Godot</span><span>Roguelike</span><span>Turn-based Combat</span>
+    </div>
+    <h1>Nirvana</h1>
+    <p class="lede">A 2D roguelike platformer with turn-based combat, character recruitment, and level-based progression.</p>
   </section>
 
+  <section class="detail">
+    <aside class="detail-side">
+      <h3>About the project</h3>
+      <p>
+        A 2D roguelike platformer built in Godot. Features turn-based combat with
+        enemy encounters, a character recruitment system for building a playable
+        team, and level-based progression. Covers full level design, player movement,
+        collision, and combat interaction.
+      </p>
 
-<script>
-  const slides = [
-    "slides/nirvana_1.jpg",
-    "slides/nirvana_2.jpg",
-    "slides/nirvana_3.jpg",
-    "slides/nirvana_4.jpg",
-    "slides/nirvana_5.jpg",
-    "slides/nirvana_6.jpg"
-  ];
+      <h3>Key features</h3>
+      <ul class="feature-list">
+        <li>2D platformer gameplay with roguelike progression</li>
+        <li>Turn-based combat with enemy encounters</li>
+        <li>Character recruitment system</li>
+        <li>Level design, movement, collision, combat</li>
+      </ul>
 
-  const mainSlide = document.getElementById("main-slide");
-  const strip = document.getElementById("slide-strip");
+      <a class="back-link" href="index.html#panel-morning">← Back to projects</a>
+    </aside>
 
-  slides.forEach((src, index) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.className = "slide-thumb";
-    if (index === 0) img.classList.add("active");
+    <div class="media">
+      <div class="cover-frame">
+        <video class="project-video" controls preload="none" poster="images/nirvana.jpg">
+          <source src="videos/nirvana.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-    img.onclick = () => {
-      mainSlide.src = src;
+      <section class="slide-viewer">
+        <img id="main-slide" src="slides/nirvana_1.jpg" alt="project slide" width="1450" height="812" loading="eager" decoding="async">
+        <div class="slide-strip" id="slide-strip"></div>
+      </section>
+    </div>
+  </section>
 
-      document.querySelectorAll(".slide-thumb").forEach(t => {
-        t.classList.remove("active");
-      });
+  <script>
+    const slides = [
+      "slides/nirvana_1.jpg", "slides/nirvana_2.jpg", "slides/nirvana_3.jpg",
+      "slides/nirvana_4.jpg", "slides/nirvana_5.jpg", "slides/nirvana_6.jpg"
+    ];
+    const mainSlide = document.getElementById("main-slide");
+    const strip = document.getElementById("slide-strip");
+    slides.forEach((src, index) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.className = "slide-thumb";
+      if (index === 0) img.classList.add("active");
+      img.loading = "lazy";
+      img.onclick = () => {
+        mainSlide.src = src;
+        document.querySelectorAll(".slide-thumb").forEach(t => t.classList.remove("active"));
+        img.classList.add("active");
+      };
+      strip.appendChild(img);
+    });
+  </script>
 
-      img.classList.add("active");
-    };
-
-    strip.appendChild(img);
-  });
-</script>
   <footer>
     <p>Crafted with curiosity</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 </body>
 </html>

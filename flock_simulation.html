@@ -4,41 +4,70 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flocking Simulation | Jiawen Wang</title>
-  <link rel="stylesheet" href="index.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="project.css">
 </head>
 
 <body>
   <header>
     <h1><a href="index.html">Jiawen Wang</a></h1>
     <nav>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">About</a>
+      <a href="index.html#panel-morning">Projects</a>
+      <a href="index.html#panel-afternoon">About</a>
     </nav>
   </header>
 
-  <section class="project-detail">
-    <h3>Real-Time Flocking Simulation and Character Behavior System</h3>
+  <section class="hero">
+    <div class="hero-tags">
+      <span>C++</span><span>OpenGL</span><span>CUDA</span><span>Steering Behaviors</span>
+    </div>
+    <h1>Flocking Simulation</h1>
+    <p class="lede">GPU-accelerated boids with character behaviors — large-scale agents with obstacle avoidance, target following, and smooth group motion.</p>
+  </section>
 
-    <video class="project-video" controls preload="none" poster="images/boid.jpg">
-      <source src="videos/flock_behavior.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <section class="detail">
+    <aside class="detail-side">
+      <h3>About the project</h3>
+      <p>
+        A real-time flocking system combining GPU-accelerated Boids (separation,
+        cohesion, alignment) with character behaviors such as seek, flee, arrival,
+        wander, obstacle avoidance, and leader following. Optimized spatial
+        partitioning keeps neighbor search fast at scale.
+      </p>
 
-    <p>
-      A real-time flocking simulation system that combines GPU-accelerated Boids behavior with character movement control to simulate large-scale agents, obstacle avoidance, target following, and smooth group motion.
-    </p>
+      <h3>Key features</h3>
+      <ul class="feature-list">
+        <li>GPU Boids: separation, cohesion, alignment</li>
+        <li>Spatial partitioning for large-scale neighbor search</li>
+        <li>Character behaviors: seek, flee, arrival, wander, avoidance</li>
+        <li>Leader following + group motion</li>
+        <li>Unity plugin integration for live parameter tuning</li>
+      </ul>
 
-    <h4>Key Features</h4>
-    <ul>
-        <li>GPU-accelerated Boids simulation with separation, cohesion, and alignment behaviors</li>
-        <li>Optimized spatial partitioning and neighbor search for large-scale agent simulation</li>
-        <li>Character behaviors including seeking, fleeing, arrival, wandering, obstacle avoidance, and leader following</li>
-        <li>Unity Plugin integration for real-time visualization and parameter debugging</li>
-    </ul>
+      <a class="back-link" href="index.html#panel-morning">← Back to projects</a>
+    </aside>
+
+    <div class="media">
+      <div class="cover-frame">
+        <video class="project-video" controls preload="none" poster="images/boid.jpg">
+          <source src="videos/flock_behavior.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>Crafted with curiosity</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cocodayow" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/cocodayow" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 </body>
 </html>
